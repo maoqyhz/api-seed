@@ -41,4 +41,6 @@ public interface IBaseRepository<T,PK extends Serializable> extends JpaRepositor
 
     Page<T> findByEntity(T t, Pageable pageable);
 
+
+
 }

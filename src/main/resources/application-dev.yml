@@ -11,10 +11,9 @@ spring:
       hibernate:
         show_sql: false
         format_sql: false
-  cache:
-    type: caffeine
-    caffeine:
-      spec: maximumSize=1024,expireAfterWrite=12h
+  mvc:
+    throw-exception-if-no-handler-found: true
+    static-path-pattern: /web/**
   devtools:
     restart:
       enabled: true
@@ -24,6 +23,9 @@ spring:
       charset: UTF-8
       force: true
       enabled: true
+  output:
+    ansi:
+      enabled: DETECT
 logging:
   file:
     path: ./logs/
@@ -32,5 +34,5 @@ server:
     uri-encoding: UTF-8
     max-threads: 100
     min-spare-threads: 20
-  port: 8080
+  port: 8088
 meta:

@@ -13,6 +13,6 @@ import org.springframework.stereotype.Component;
 @Component
 
 @ConfigurationProperties(prefix = "meta")
-public class PropertiesConfig {
+public class CustomProperties {
 
 }

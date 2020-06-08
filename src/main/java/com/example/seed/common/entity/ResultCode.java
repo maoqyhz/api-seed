@@ -12,8 +12,9 @@ import java.util.Optional;
  */
 @Getter
 public enum ResultCode {
-    SUCCESS(0,"Success"),
-    REQUEST_FAILED_ERROR(-1001, "后台请求返回失败");
+    SUCCESS(0, "Success"),
+    REQUEST_FAILED_ERROR(-5001, "后台请求返回失败"),
+    INVALID_PARAMS_ERROR(-5002, "请求参数不合法");
 
     private int code;
     private String msg;

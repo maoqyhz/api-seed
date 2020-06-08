@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -30,9 +30,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedMethods("*")
                 .allowedOrigins("*")
-                .allowedHeaders("*");
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .maxAge(3600);
     }
 
     /**
@@ -42,7 +43,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/index.html");
+        registry.addViewController("/").setViewName("forward:/web/index.html");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
@@ -59,7 +60,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
                 SerializerFeature.WriteMapNullValue
         );
         fastConverter.setFastJsonConfig(fastJsonConfig);
-        fastConverter.setDefaultCharset(Charset.forName("UTF-8"));
+        fastConverter.setDefaultCharset(StandardCharsets.UTF_8);
         converters.add(0, fastConverter);
     }
 
