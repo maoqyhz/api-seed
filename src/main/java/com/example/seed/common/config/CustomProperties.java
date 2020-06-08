@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-
 @ConfigurationProperties(prefix = "meta")
 public class CustomProperties {
 
