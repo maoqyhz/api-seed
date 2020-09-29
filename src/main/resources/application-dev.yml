@@ -14,10 +14,6 @@ spring:
   mvc:
     throw-exception-if-no-handler-found: true
     static-path-pattern: /web/**
-  devtools:
-    restart:
-      enabled: true
-      additional-paths: src/main/java
   http:
     encoding:
       charset: UTF-8
