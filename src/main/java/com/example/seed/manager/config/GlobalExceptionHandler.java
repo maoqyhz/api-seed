@@ -40,11 +40,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public RestResult runtimeExceptionHandler(RuntimeException ex) {
         log.error(ex.toString(), ex);
-        return new RestResult() {{
-            setCode(500);
-            setMsg("服务器异常，请联系管理员");
-            setData(ex.toString());
-        }};
+        return new RestResult(500, "服务器异常，请联系管理员", ex.toString());
     }
 
     /**
@@ -55,11 +51,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NoHandlerFoundException.class)
     public RestResult noHandlerFoundExceptionHandler(Exception ex) {
-        return new RestResult() {{
-            setCode(404);
-            setMsg("访问资源不存在或参数错误");
-            setData(ex.toString());
-        }};
+        return new RestResult(404, "访问资源不存在或参数错误", ex.toString());
     }
 
     /**
@@ -70,10 +62,6 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public RestResult httpRequestMethodNotSupportedExceptionHandler(Exception ex) {
-        return new RestResult() {{
-            setCode(405);
-            setMsg("HTTP请求方式错误");
-            setData(ex.toString());
-        }};
+        return new RestResult(405, "HTTP请求方式错误", ex.toString());
     }
 }
