@@ -1,6 +1,6 @@
-package com.example.seed.manager.config;
+package com.example.seed.common.config;
 
-import com.example.seed.manager.support.ResultCode;
+import com.example.seed.common.support.ResultCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

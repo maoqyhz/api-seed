@@ -1,4 +1,4 @@
-package com.example.seed.manager.util;
+package com.example.seed.common.util;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;

@@ -1,7 +1,7 @@
 package com.example.seed.web.param;
 
-import com.example.seed.web.param.validate.NewEntity;
-import com.example.seed.web.param.validate.UpdateEntity;
+import com.example.seed.web.param.validation.groups.AddFlag;
+import com.example.seed.web.param.validation.groups.UpdateFlag;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -15,23 +15,23 @@ import java.util.Set;
  */
 @Data
 public class ParamExample {
-    @NotNull(message = "项目ID不能为空", groups = {UpdateEntity.class})
+    @NotNull(message = "项目ID不能为空", groups = {UpdateFlag.class})
     private Integer id;
     @Pattern(regexp = "^\\d{5}-*\\d*$", message = "已立项项目请输入合法的5位数字项目号")
     private String num;
     @NotBlank(message = "项目名称不能为空")
     private String name;
-    @NotNull(message = "项目创建位置不能为空", groups = {NewEntity.class})
+    @NotNull(message = "项目创建位置不能为空", groups = {AddFlag.class})
     private String savedLocation;
     @Pattern(regexp = "[a-zA-z]+://[^\\s]*", message = "项目地址格式不正确,请输入合法的doc-server项目URL")
     private String url;
-    @NotNull(message = "项目类型不能为空", groups = {NewEntity.class})
+    @NotNull(message = "项目类型不能为空", groups = {AddFlag.class})
     private Integer type;
     @NotNull(message = "项目成员不能为null")
     private Set<Integer> members;
     private Set<Integer> qaMembers;
     private String introduction;
     private Integer qaDirWrite;
-    @NotNull(message = "项目所有者不能为空", groups = {NewEntity.class})
+    @NotNull(message = "项目所有者不能为空", groups = {AddFlag.class})
     private Integer owner;
 }

@@ -1,4 +1,4 @@
-package com.example.seed.manager.config;
+package com.example.seed.common.config;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;

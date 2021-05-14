@@ -1,6 +1,6 @@
-package com.example.seed.manager.config;
+package com.example.seed.common.config;
 
-import com.example.seed.manager.support.RestResult;
+import com.example.seed.common.support.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -26,9 +26,9 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(ServiceException.class)
-    public RestResult serviceExceptionHandler(ServiceException ex) {
+    public <T> CommonResult<T> serviceExceptionHandler(ServiceException ex) {
         log.error(ex.toString(), ex);
-        return RestResult.bizError(ex.getCode(), ex.getMsg());
+        return CommonResult.bizError(ex.getCode(), ex.getMsg());
     }
 
     /**
@@ -38,9 +38,13 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(RuntimeException.class)
-    public RestResult runtimeExceptionHandler(RuntimeException ex) {
+    public CommonResult<String> runtimeExceptionHandler(RuntimeException ex) {
         log.error(ex.toString(), ex);
-        return new RestResult(500, "服务器异常，请联系管理员", ex.toString());
+        CommonResult<String> result = new CommonResult<>();
+        result.setCode(500);
+        result.setMsg("服务器异常，请联系管理员");
+        result.setData(ex.toString());
+        return result;
     }
 
     /**
@@ -50,8 +54,12 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(NoHandlerFoundException.class)
-    public RestResult noHandlerFoundExceptionHandler(Exception ex) {
-        return new RestResult(404, "访问资源不存在或参数错误", ex.toString());
+    public CommonResult<String> noHandlerFoundExceptionHandler(Exception ex) {
+        CommonResult<String> result = new CommonResult<>();
+        result.setCode(404);
+        result.setMsg("访问资源不存在或参数错误");
+        result.setData(ex.toString());
+        return result;
     }
 
     /**
@@ -61,7 +69,11 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public RestResult httpRequestMethodNotSupportedExceptionHandler(Exception ex) {
-        return new RestResult(405, "HTTP请求方式错误", ex.toString());
+    public CommonResult<String> httpRequestMethodNotSupportedExceptionHandler(Exception ex) {
+        CommonResult<String> result = new CommonResult<>();
+        result.setCode(405);
+        result.setMsg("HTTP请求方式错误");
+        result.setData(ex.toString());
+        return result;
     }
 }

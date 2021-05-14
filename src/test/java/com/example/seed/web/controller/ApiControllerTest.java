@@ -32,6 +32,4 @@ public class ApiControllerTest {
     public void testQuery() throws Exception {
         //TODO: Test goes here...
     }
-
-
 }

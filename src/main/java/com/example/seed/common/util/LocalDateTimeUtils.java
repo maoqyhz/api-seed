@@ -1,4 +1,4 @@
-package com.example.seed.manager.util;
+package com.example.seed.common.util;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
-package com.example.seed.manager.config;
+package com.example.seed.common.config;
 
-import com.example.seed.manager.support.ResultCode;
+import com.example.seed.common.support.ResultCode;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.ArrayListMultimap;

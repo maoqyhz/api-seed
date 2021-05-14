@@ -1,4 +1,4 @@
-package com.example.seed.manager.support;
+package com.example.seed.common.support;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,14 +14,13 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pagination<T> {
+public class PageResult<T> {
     private Integer pageIndex;
     private Integer pageSize;
-    private Integer totalPages;
     private Long total;
     private List<T> items;
 
-    public Pagination(Integer pageIndex, Integer pageSize) {
+    public PageResult(Integer pageIndex, Integer pageSize) {
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
     }

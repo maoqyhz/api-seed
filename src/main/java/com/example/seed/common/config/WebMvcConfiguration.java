@@ -1,4 +1,4 @@
-package com.example.seed.manager.config;
+package com.example.seed.common.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

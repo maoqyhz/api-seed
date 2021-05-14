@@ -1,4 +1,4 @@
-package com.example.seed.manager.config;
+package com.example.seed.common.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;

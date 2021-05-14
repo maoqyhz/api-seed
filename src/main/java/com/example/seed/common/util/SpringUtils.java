@@ -1,4 +1,4 @@
-package com.example.seed.manager.util;
+package com.example.seed.common.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

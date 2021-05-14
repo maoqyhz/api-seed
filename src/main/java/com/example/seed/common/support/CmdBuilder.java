@@ -1,4 +1,4 @@
-package com.example.seed.manager.support;
+package com.example.seed.common.support;
 
 import com.google.common.base.Joiner;
 import lombok.Builder;
