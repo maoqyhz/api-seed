@@ -1,11 +1,10 @@
 package com.example.seed.web.controller;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.example.seed.SeedApplication;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ActiveProfiles;
 
 /**
  * ApiController Tester.
@@ -13,21 +12,12 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Fururur
  * @since <pre>12/12/2019</pre>
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@Slf4j
+@ActiveProfiles(value = "dev")
+@SpringBootTest(classes = SeedApplication.class,
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ApiControllerTest {
 
-    @Before
-    public void before() throws Exception {
-    }
-
-    @After
-    public void after() throws Exception {
-    }
-
-    /**
-     * Method: query()
-     */
     @Test
     public void testQuery() throws Exception {
         //TODO: Test goes here...

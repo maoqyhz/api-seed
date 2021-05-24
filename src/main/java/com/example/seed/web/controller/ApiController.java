@@ -1,6 +1,7 @@
 package com.example.seed.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.seed.common.support.CommonResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +39,7 @@ public class ApiController {
     }
 
     @GetMapping("/query")
-    public String query() {
-        return "api";
+    public CommonResult<String> query() {
+        return CommonResult.ok("hello");
     }
 }

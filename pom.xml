@@ -15,8 +15,11 @@
     <description>Seed project for Spring Boot</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
+
         <druid-spring-boot-starter.version>1.1.10</druid-spring-boot-starter.version>
         <guava.version>30.0-jre</guava.version>
         <fastjson.version>1.2.59</fastjson.version>
@@ -66,7 +69,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>30.0-jre</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
