@@ -1,5 +1,7 @@
 package com.example.seed.common.support;
 
+import com.example.seed.common.exception.BaseResultCode;
+import com.example.seed.common.exception.ErrorCode;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -14,8 +16,8 @@ import java.io.Serializable;
  */
 @Data
 public class CommonResult<T> implements Serializable {
-    private Integer code = ResultCode.SUCCESS.getCode();
-    private String msg = ResultCode.SUCCESS.getMsg();
+    private Integer code = BaseResultCode.SUCCESS.getCode();
+    private String msg = BaseResultCode.SUCCESS.getMsg();
     private T data;
 
     public static <T> CommonResult<T> ok() {
@@ -28,14 +30,14 @@ public class CommonResult<T> implements Serializable {
         return result;
     }
 
-    public static <T> CommonResult<T> bizError(ResultCode code) {
+    public static <T> CommonResult<T> bizError(ErrorCode code) {
         CommonResult<T> result = new CommonResult<>();
         result.setCode(code.getCode());
         result.setMsg(code.getMsg());
         return result;
     }
 
-    public static <T> CommonResult<T> bizError(ResultCode code, String msg) {
+    public static <T> CommonResult<T> bizError(ErrorCode code, String msg) {
         CommonResult<T> result = new CommonResult<>();
         result.setCode(code.getCode());
         result.setMsg(msg);
@@ -50,7 +52,7 @@ public class CommonResult<T> implements Serializable {
 
     public static CommonResult<Multimap<String, String>> invalidParams(Multimap<String, String> errors) {
         CommonResult<Multimap<String, String>> result = new CommonResult<>();
-        result.setCode(ResultCode.INVALID_PARAMS_ERROR.getCode());
+        result.setCode(BaseResultCode.INVALID_PARAMS_ERROR.getCode());
         result.setMsg(Joiner.on(",").join(errors.get("errors").toArray()));
         result.setData(errors);
         return result;
@@ -58,14 +60,14 @@ public class CommonResult<T> implements Serializable {
 
     public static <T> CommonResult<T> invalidParams() {
         CommonResult<T> result = new CommonResult<>();
-        result.setCode(ResultCode.INVALID_PARAMS_ERROR.getCode());
-        result.setMsg(ResultCode.INVALID_PARAMS_ERROR.getMsg());
+        result.setCode(BaseResultCode.INVALID_PARAMS_ERROR.getCode());
+        result.setMsg(BaseResultCode.INVALID_PARAMS_ERROR.getMsg());
         return result;
     }
 
     public static <T> CommonResult<T> invalidParams(String msg) {
         CommonResult<T> result = new CommonResult<>();
-        result.setCode(ResultCode.INVALID_PARAMS_ERROR.getCode());
+        result.setCode(BaseResultCode.INVALID_PARAMS_ERROR.getCode());
         result.setMsg(msg);
         return result;
     }

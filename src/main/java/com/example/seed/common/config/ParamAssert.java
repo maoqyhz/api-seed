@@ -1,6 +1,7 @@
 package com.example.seed.common.config;
 
-import com.example.seed.common.support.ResultCode;
+import com.example.seed.common.exception.BaseResultCode;
+import com.example.seed.common.exception.ServiceException;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.ArrayListMultimap;
@@ -19,8 +20,8 @@ public class ParamAssert {
 
     public static void notNull(@Nullable Object object, String message) {
         if (object == null) {
-            throw new ServiceException(ResultCode.INVALID_PARAMS_ERROR,
-                    Strings.isNullOrEmpty(message) ? ResultCode.INVALID_PARAMS_ERROR.getMsg() : message);
+            throw new ServiceException(BaseResultCode.INVALID_PARAMS_ERROR,
+                    Strings.isNullOrEmpty(message) ? BaseResultCode.INVALID_PARAMS_ERROR.getMsg() : message);
         }
     }
 
@@ -43,7 +44,7 @@ public class ParamAssert {
             }
         }
         if (i == len) {
-            throw new ServiceException(ResultCode.INVALID_PARAMS_ERROR, message);
+            throw new ServiceException(BaseResultCode.INVALID_PARAMS_ERROR, message);
         }
     }
 
@@ -65,8 +66,8 @@ public class ParamAssert {
 
     public static void notBlank(@Nullable String str, String message) {
         if (Strings.isNullOrEmpty(str)) {
-            throw new ServiceException(ResultCode.INVALID_PARAMS_ERROR,
-                    Strings.isNullOrEmpty(message) ? ResultCode.INVALID_PARAMS_ERROR.getMsg() : message);
+            throw new ServiceException(BaseResultCode.INVALID_PARAMS_ERROR,
+                    Strings.isNullOrEmpty(message) ? BaseResultCode.INVALID_PARAMS_ERROR.getMsg() : message);
         }
     }
 
@@ -74,7 +75,7 @@ public class ParamAssert {
         if (object.hasErrors()) {
             Multimap<String, String> errors = ArrayListMultimap.create();
             object.getFieldErrors().forEach(e -> errors.put("errors", e.getDefaultMessage()));
-            throw new ServiceException(ResultCode.INVALID_PARAMS_ERROR,
+            throw new ServiceException(BaseResultCode.INVALID_PARAMS_ERROR,
                     Joiner.on(",").join(errors.get("errors").toArray()));
         }
     }

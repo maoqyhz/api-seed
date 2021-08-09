@@ -14,11 +14,6 @@ spring:
   mvc:
     throw-exception-if-no-handler-found: true
     static-path-pattern: /web/**
-  http:
-    encoding:
-      charset: UTF-8
-      force: true
-      enabled: true
   output:
     ansi:
       enabled: DETECT
@@ -28,7 +23,13 @@ logging:
 server:
   tomcat:
     uri-encoding: UTF-8
-    max-threads: 100
-    min-spare-threads: 20
+    threads:
+      max: 100
+      min-spare: 20
   port: 8088
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
 meta:

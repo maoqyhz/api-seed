@@ -1,6 +1,5 @@
-package com.example.seed.common.config;
+package com.example.seed.common.exception;
 
-import com.example.seed.common.support.ResultCode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,16 +10,16 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class ServiceException extends RuntimeException {
-    private ResultCode code;
+    private ErrorCode code;
     private String msg;
 
-    public ServiceException(ResultCode code) {
+    public ServiceException(ErrorCode code) {
         super(code.getMsg());
         this.code = code;
         this.msg = code.getMsg();
     }
 
-    public ServiceException(ResultCode code, String msg) {
+    public ServiceException(ErrorCode code, String msg) {
         super(msg);
         this.code = code;
         this.msg = msg;

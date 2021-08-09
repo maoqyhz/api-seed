@@ -1,4 +1,4 @@
-package com.example.seed.common.config;
+package com.example.seed.common.exception;
 
 import com.example.seed.common.support.CommonResult;
 import lombok.extern.slf4j.Slf4j;
